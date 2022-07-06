@@ -294,4 +294,4 @@ __pycache__/
 *.xsd.cs
 
 # Other
-public/
+public/*.js
