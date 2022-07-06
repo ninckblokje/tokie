@@ -1,18 +1,43 @@
 <!doctype html>
 <html>
+
 <head>
   <title>tokie</title>
   <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="fable.ico" />
+  <link href="bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" />
 </head>
+
 <body>
-    <p>Fable is running</p>
-    <textarea class="token-textarea"></textarea>
-    <textarea class="jwk-textarea"></textarea>
-    <textarea class="output-textarea"></textarea>
-    <textarea class="valid-textarea"></textarea>
-    <button class="validate-button">Validate</button>
-    <script src="bundle.js"></script>
+  <div class="container-fluid">
+    <div class="mb-3">
+      <label for="tokenTextarea" class="form-label">JWT token</label>
+      <textarea id="tokenTextarea" class="token-textarea form-control" rows="8"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="jwkTextarea" class="form-label">JWK key</label>
+      <textarea id="jwkTextarea" class="jwk-textarea form-control" rows="10"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="outputTextarea" class="form-label">Decoded JWT token</label>
+      <textarea id="outputTextarea" disabled class="output-textarea form-control-plaintext" rows="5"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="validTextarea" class="form-label">Signature validation</label>
+      <textarea id="validTextarea" disabled class="valid-textarea form-control-plaintext" rows="1"></textarea>
+    </div>
+    <div class="row">
+      <div class="col d-flex flex-row-reverse">
+        <button class="validate-button btn btn-primary">Validate</button>
+      </div>
+      <div class="col d-flex flex-row">
+        <button class="reset-button btn btn-outline-primary">Reset</button>
+      </div>
+    </div>
+  </div>
+  <script src="bundle.js"></script>
 </body>
+
 </html>

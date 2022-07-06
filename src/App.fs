@@ -24,6 +24,9 @@ let tokenTextarea =
 let validTextarea =
     document.querySelector (".valid-textarea") :?> Browser.Types.HTMLTextAreaElement
 
+let resetButton =
+    document.querySelector (".reset-button") :?> Browser.Types.HTMLButtonElement
+
 let validateButton =
     document.querySelector (".validate-button") :?> Browser.Types.HTMLButtonElement
 
@@ -119,7 +122,13 @@ let updateTextareas token =
     outputTextarea.value <- printToken token
     validTextarea.value <- if token.Valid then "" else token.Reason.Value
 
-// Register our listener
+resetButton.onclick <-
+    fun _ ->
+        tokenTextarea.value <- ""
+        jwkTextarea.value <- ""
+        outputTextarea.value <- ""
+        validTextarea.value <- ""
+
 validateButton.onclick <-
     fun _ ->
         let rawJWK = jwkTextarea.value
