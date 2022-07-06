@@ -77,15 +77,21 @@ let validateToken(token: Token) =
         token
 
 let validateValidTokenSignature(rawJWK: string) (token: Token) : JS.Promise<Token> =
-    let jwk = parseJWK rawJWK
+    try
+        let jwk = parseJWK rawJWK
 
-    match token.Header.Value.alg with
-    | "none" -> promise { return token }
-    | "RS256" -> validateRS256Signature token jwk
-    | _ -> promise { return copyToken false (Some "Signature is not valid") token }
+        match token.Header.Value.alg with
+        | "none" -> promise { return token }
+        | "RS256" -> validateRS256Signature token jwk
+        | _ -> promise { return copyToken false (Some "Signature is not valid") token }
+    with
+    | exn ->
+        console.error exn
+        console.error exn.StackTrace
+        promise { return copyToken false (Some "Error validating signature or parsing key") token }
 
 let validateTokenSignature (rawJWK: string) (token: Token) =
-    if token.Valid && token.Header.IsSome
+    if token.Valid && token.Header.IsSome && rawJWK.Trim() <> ""
     then
         validateValidTokenSignature rawJWK token
     else
