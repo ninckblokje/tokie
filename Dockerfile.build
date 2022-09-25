@@ -20,6 +20,7 @@ RUN npm ci && \
     npm run postinstall && \
     npm run build
 
-FROM nginxinc/nginx-unprivileged:stable-alpine
+FROM caddy:latest
 
-COPY --from=BUILD /app/public /usr/share/nginx/html
+COPY --from=BUILD /app/public /var/www/html
+COPY --from=BUILD /app/Caddyfile /etc/caddy/Caddyfile
