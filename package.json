@@ -5,7 +5,7 @@
     "start": "dotnet fable watch src --run webpack-dev-server",
     "build": "dotnet fable src && webpack",
     "build-container": "docker build -f Dockerfile.build -t ninckblokje/tokie:latest .",
-    "run-container": "docker run -p 8443:443 ninckblokje/tokie:latest"
+    "run-container": "docker run -p 8443:443 --mount source=tokie-data,target=/data/caddy ninckblokje/tokie:latest"
   },
   "devDependencies": {
     "webpack": "^4.46.0",
