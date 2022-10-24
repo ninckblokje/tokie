@@ -48,3 +48,5 @@ FROM caddy:latest
 
 COPY --from=BUILD /app/public /var/www/html
 COPY --from=BUILD /app/Caddyfile /etc/caddy/Caddyfile
+
+VOLUME [ "/data/caddy" ]
