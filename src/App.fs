@@ -168,4 +168,6 @@ validateButton.onclick <-
         |> parseToken
         |> validateToken
         |> validateTokenSignature rawJWK
-        |> Promise.map updateTextareas
+        |> Promise.map updateTextareas |> ignore
+
+        ()
