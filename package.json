@@ -8,9 +8,9 @@
     "run-container": "docker run -p 8443:443 ninckblokje/tokie:latest"
   },
   "devDependencies": {
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
   },
   "version": "1.0.0"
 }
